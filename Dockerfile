@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 ENV BUILDCACHE_COMPRESS="true"
 ENV BUILDCACHE_DIRECT_MODE="true"
 ENV BUILDCACHE_ACCURACY="SLOPPY"
-ENV PATH="/opt:/opt/cmake-3.23.0-rc3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="/opt:/opt/node-v16.14.0-linux-x64/bin:/opt/cmake-3.23.0-rc3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # BASE SETUP
@@ -47,9 +47,15 @@ RUN wget https://github.com/motis-project/musl-toolchains/releases/download/0.0.
     tar xf x86_64-multilib-linux-musl.tar.xz -C /opt && \
     rm -rf x86_64-multilib-linux-musl.tar.xz
 
+# INSTALL NODE JS
+RUN wget https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.xz && \
+    tar xf node-v16.14.0-linux-x64.tar.xz -C /opt && \
+    rm -rf node-v16.14.0-linux-x64
+
 # INSTALL CMAKE
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-x86_64.tar.gz &&\
-    tar xf cmake-3.23.0-rc3-linux-x86_64.tar.gz -C /opt
+    tar xf cmake-3.23.0-rc3-linux-x86_64.tar.gz -C /opt && \
+    rm -rf cmake-3.23.0-rc3-linux-x86_64.tar.gz
 
 # INSTALL PKG
 RUN wget https://github.com/motis-project/pkg/releases/download/v0.14/pkg-linux-amd64 -O /opt/pkg && \
@@ -57,4 +63,5 @@ RUN wget https://github.com/motis-project/pkg/releases/download/v0.14/pkg-linux-
 
 # INSTALL BUILDCACHE
 RUN wget https://github.com/mbitsnbites/buildcache/releases/download/v0.27.6/buildcache-linux.tar.gz && \
-    tar xf buildcache-linux.tar.gz -C /opt
+    tar xf buildcache-linux.tar.gz -C /opt && \
+    rm -rf buildcache-linux.tar.gz
