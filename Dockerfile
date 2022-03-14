@@ -18,6 +18,7 @@ RUN apt-get update && \
     wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
+        netbase \
         git wget gnupg2 \
         valgrind \
         ninja-build qemu-user-static \
