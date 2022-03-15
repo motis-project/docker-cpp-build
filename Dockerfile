@@ -67,3 +67,6 @@ RUN wget https://github.com/motis-project/pkg/releases/download/v0.14/pkg-linux-
 RUN wget https://github.com/mbitsnbites/buildcache/releases/download/v0.27.6/buildcache-linux.tar.gz && \
     tar xf buildcache-linux.tar.gz -C /opt && \
     rm -rf buildcache-linux.tar.gz
+    
+# ADD BUILD DEBUG TOOLS
+RUN apt-get install -y --no-install-recommends tree
