@@ -29,7 +29,7 @@ RUN add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 m
     apt-get install -y --no-install-recommends clang-14 lldb-14 lld-14 clangd-14 clang-tidy-14 clang-format-14 clang-tools-14 llvm-14-dev llvm-14-tools libomp-14-dev libc++-14-dev libc++abi-14-dev libclang-common-14-dev libclang-14-dev libclang-cpp14-dev libunwind-14-dev
 
 # INSTALL MOLD LINKER
-RUN wget https://github.com/motis-project/mold/releases/download/v1.0.0-musl-strip/mold-linux-amd64 && \
+RUN wget https://github.com/motis-project/mold/releases/download/v1.2.0/mold-linux-amd64 && \
     mkdir -p /opt/mold && \
     mv mold-linux-amd64 /opt/mold/ld && \
     chmod +x /opt/mold/ld
