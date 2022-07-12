@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS build-env
+FROM ubuntu:22.04 AS build-env
 
 ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-14/bin/llvm-symbolizer"
 ENV ASAN_OPTIONS="alloc_dealloc_mismatch=0"
@@ -22,10 +22,10 @@ RUN apt-get update && \
         git wget gnupg2 \
         valgrind \
         ninja-build qemu-user-static \
-        g++-10 gcc-10
+        g++-11 gcc-11
 
 # INSTALL CLANG
-RUN add-apt-repository "deb http://apt.llvm.org/focal/ llvm-toolchain-focal-14 main" && \
+RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy main" && \
     apt-get install -y --no-install-recommends clang-14 lldb-14 lld-14 clangd-14 clang-tidy-14 clang-format-14 clang-tools-14 llvm-14-dev llvm-14-tools libomp-14-dev libc++-14-dev libc++abi-14-dev libclang-common-14-dev libclang-14-dev libclang-cpp14-dev libunwind-14-dev
 
 # INSTALL MOLD LINKER
@@ -70,3 +70,10 @@ RUN wget https://github.com/mbitsnbites/buildcache/releases/download/v0.27.6/bui
     
 # ADD BUILD DEBUG TOOLS
 RUN apt-get install -y --no-install-recommends tree
+
+# QUICKFIX FOR THIS ERROR FROM BUILDCACHE
+# "libcrypto.so.1.1: cannot open shared object file: No such file or directory"
+# Source: https://stackoverflow.com/a/72633324
+RUN wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb && \
+    dpkg -i libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb && \
+    rm -rf libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb
