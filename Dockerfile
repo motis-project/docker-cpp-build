@@ -74,9 +74,9 @@ RUN apt-get install -y --no-install-recommends tree
 # QUICKFIX FOR THIS ERROR FROM BUILDCACHE
 # "libcrypto.so.1.1: cannot open shared object file: No such file or directory"
 # Source: https://stackoverflow.com/a/72633324
-RUN wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb && \
-    dpkg -i libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb && \
-    rm -rf libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb
+RUN wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb && \
+    dpkg -i libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb && \
+    rm -rf libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
 
 # UBUNTU 22.04 IS MISSING BZIP IN THE BASE IMAGE
 RUN apt-get install -y --no-install-recommends bzip2
