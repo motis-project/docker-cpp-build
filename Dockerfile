@@ -80,3 +80,18 @@ RUN wget http://nz2.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.
 
 # UBUNTU 22.04 IS MISSING BZIP IN THE BASE IMAGE
 RUN apt-get install -y --no-install-recommends bzip2
+
+# Install sysconfcpus
+# https://github.com/elm-community/elm-webpack-loader/issues/96
+RUN apt install build-essential -y --no-install-recommends && \
+    cd /opt && \
+    git clone https://github.com/obmarg/libsysconfcpus.git && \
+    cd libsysconfcpus && \
+    ./configure && \
+    make && make install
+
+# Replace elm-make to call sysconfcpus before.
+RUN cd /opt && \
+    mv elm-make elm-make-orig && \
+    printf "#\041/bin/bash\n\necho \"Running elm-make with sysconfcpus -n 2\"\n\n/usr/local/bin/sysconfcpus -n 2 /opt/elm-make-orig \"\$@\"" > elm-make && \
+    chmod +x elm-make
