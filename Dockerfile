@@ -64,19 +64,12 @@ RUN wget https://github.com/motis-project/pkg/releases/download/v0.14/pkg-linux-
     chmod +x /opt/pkg
 
 # INSTALL BUILDCACHE
-RUN wget https://github.com/mbitsnbites/buildcache/releases/download/v0.27.6/buildcache-linux.tar.gz && \
+RUN wget https://github.com/mbitsnbites/buildcache/releases/download/v0.28.2/buildcache-linux.tar.gz && \
     tar xf buildcache-linux.tar.gz -C /opt && \
     rm -rf buildcache-linux.tar.gz
 
 # ADD BUILD DEBUG TOOLS
 RUN apt-get install -y --no-install-recommends tree
-
-# QUICKFIX FOR THIS ERROR FROM BUILDCACHE
-# "libcrypto.so.1.1: cannot open shared object file: No such file or directory"
-# Source: https://stackoverflow.com/a/72633324
-RUN wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb && \
-    dpkg -i libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb && \
-    rm -rf libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb
 
 # UBUNTU 22.04 IS MISSING BZIP IN THE BASE IMAGE
 RUN apt-get install -y --no-install-recommends bzip2
