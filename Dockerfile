@@ -8,7 +8,7 @@ ENV BUILDCACHE_COMPRESS="true"
 ENV BUILDCACHE_DIRECT_MODE="true"
 ENV BUILDCACHE_ACCURACY="SLOPPY"
 ENV BUILDCACHE_LUA_PATH="/opt/buildcache/share/lua-examples"
-ENV PATH="/opt:/opt/node-v16.14.0-linux-x64/bin:/opt/cmake-3.23.0-rc3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="/opt:/opt/node-v18.16.0-linux-x64/bin:/opt/cmake-3.26.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # BASE SETUP
