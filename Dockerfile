@@ -50,9 +50,9 @@ RUN wget https://github.com/motis-project/musl-toolchains/releases/download/0.0.
     rm -rf x86_64-multilib-linux-musl.tar.xz
 
 # INSTALL NODE JS
-RUN wget https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.xz && \
-    tar xf node-v16.14.0-linux-x64.tar.xz -C /opt && \
-    rm -rf node-v16.14.0-linux-x64
+RUN wget https://nodejs.org/dist/v18.16.0/node-v18.16.0-linux-x64.tar.xz && \
+    tar xf node-v18.16.0-linux-x64.tar.xz -C /opt && \
+    rm -rf node-v18.16.0-linux-x64.tar.xz
 
 # INSTALL CMAKE
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3-linux-x86_64.tar.gz &&\
