@@ -55,9 +55,9 @@ RUN wget https://nodejs.org/dist/v16.14.0/node-v16.14.0-linux-x64.tar.xz && \
     rm -rf node-v16.14.0-linux-x64
 
 # INSTALL CMAKE
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.23.0-rc3/cmake-3.23.0-rc3-linux-x86_64.tar.gz &&\
-    tar xf cmake-3.23.0-rc3-linux-x86_64.tar.gz -C /opt && \
-    rm -rf cmake-3.23.0-rc3-linux-x86_64.tar.gz
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3-linux-x86_64.tar.gz &&\
+    tar xf cmake-3.26.3-linux-x86_64.tar.gz -C /opt && \
+    rm -rf cmake-3.26.3-linux-x86_64.tar.gz
 
 # INSTALL PKG
 RUN wget https://github.com/motis-project/pkg/releases/download/v0.14/pkg-linux-amd64 -O /opt/pkg && \
