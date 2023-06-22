@@ -22,7 +22,7 @@ RUN apt-get update && \
         git wget gnupg2 \
         valgrind \
         ninja-build qemu-user-static \
-        g++-11 gcc-11
+        g++-12 gcc-12
 
 # INSTALL CLANG
 RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main" && \
