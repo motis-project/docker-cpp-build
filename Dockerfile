@@ -26,7 +26,7 @@ RUN apt-get update && \
 
 # INSTALL CLANG
 RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main" && \
-    apt-get install -y --no-install-recommends clang-16 lldb-16 lld-16 clangd-16 clang-tidy-16 clang-format-16 clang-tools-16 llvm-16-dev llvm-16-tools libomp-16-dev libc++-16-dev libc++abi-16-dev libclang-common-16-dev libclang-16-dev libclang-cpp16-dev libunwind-16-dev
+    apt-get install -y --no-install-recommends clang-16 lldb-16 lld-16 clangd-16 clang-tidy-16 clang-format-16 clang-tools-16 llvm-16-dev llvm-16-tools libomp-16-dev libc++-16-dev libc++abi-16-dev libclang-common-16-dev libclang-16-dev libclang-cpp16-dev libunwind-16-dev libclang-rt-16-dev
 
 # INSTALL MOLD LINKER
 RUN wget https://github.com/motis-project/mold/releases/download/v1.2.0/mold-linux-amd64 && \
