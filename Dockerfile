@@ -8,7 +8,7 @@ ENV BUILDCACHE_COMPRESS="true"
 ENV BUILDCACHE_DIRECT_MODE="true"
 ENV BUILDCACHE_ACCURACY="SLOPPY"
 ENV BUILDCACHE_LUA_PATH="/opt/buildcache/share/lua-examples"
-ENV PATH="/opt:/opt/node-v20.11.1-linux-x64/bin:/opt/cmake-3.26.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="/opt:/opt/node-v20.11.1-linux-x64/bin:/opt/cmake-3.28.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # BASE SETUP
@@ -55,9 +55,9 @@ RUN wget https://nodejs.org/dist/v20.11.1/node-v20.11.1-linux-x64.tar.xz && \
     rm -rf node-v20.11.1-linux-x64.tar.xz
 
 # INSTALL CMAKE
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.26.3/cmake-3.26.3-linux-x86_64.tar.gz &&\
-    tar xf cmake-3.26.3-linux-x86_64.tar.gz -C /opt && \
-    rm -rf cmake-3.26.3-linux-x86_64.tar.gz
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.tar.gz &&\
+    tar xf cmake-3.28.3-linux-x86_64.tar.gz -C /opt && \
+    rm -rf cmake-3.28.3-linux-x86_64.tar.gz
 
 # INSTALL PKG
 RUN wget https://github.com/motis-project/pkg/releases/download/v0.14/pkg-linux-amd64 -O /opt/pkg && \
