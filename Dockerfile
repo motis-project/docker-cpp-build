@@ -1,6 +1,6 @@
-FROM ubuntu:22.04 AS build-env
+FROM ubuntu:24.04 AS build-env
 
-ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-16/bin/llvm-symbolizer"
+ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-17/bin/llvm-symbolizer"
 ENV ASAN_OPTIONS="alloc_dealloc_mismatch=0"
 ENV UBSAN_OPTIONS="halt_on_error=1:abort_on_error=1"
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -22,11 +22,11 @@ RUN apt-get update && \
         git wget gnupg2 \
         valgrind \
         ninja-build qemu-user-static \
-        g++-12 gcc-12
+        g++-13 gcc-13
 
 # INSTALL CLANG
-RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main" && \
-    apt-get install -y --no-install-recommends clang-16 lldb-16 lld-16 clangd-16 clang-tidy-16 clang-format-16 clang-tools-16 llvm-16-dev llvm-16-tools libomp-16-dev libc++-16-dev libc++abi-16-dev libclang-common-16-dev libclang-16-dev libclang-cpp16-dev libunwind-16-dev libclang-rt-16-dev
+RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" && \
+    apt-get install -y --no-install-recommends clang-17 lldb-17 lld-17 clangd-17 clang-tidy-17 clang-format-17 clang-tools-17 llvm-17-dev llvm-17-tools libomp-17-dev libc++-17-dev libc++abi-17-dev libclang-common-17-dev libclang-17-dev libclang-cpp16-dev libunwind-17-dev libclang-rt-17-dev
 
 # INSTALL MOLD LINKER
 RUN wget https://github.com/motis-project/mold/releases/download/v1.2.0/mold-linux-amd64 && \
