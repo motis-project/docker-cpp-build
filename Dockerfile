@@ -39,13 +39,13 @@ RUN wget https://github.com/elm-lang/elm-platform/releases/download/0.18.0-exp/e
     tar xf elm-platform-linux-64bit.tar.gz -C /opt
 
 # INSTALL CROSS-PLATFORM TOOLCHAINS
-RUN wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.13/aarch64-unknown-linux-musl.tar.xz && \
+RUN wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.14/aarch64-unknown-linux-musl.tar.xz && \
     tar xf aarch64-unknown-linux-musl.tar.xz -C /opt && \
     rm -rf aarch64-unknown-linux-musl.tar.xz && \
-    wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.13/arm-unknown-linux-musleabihf.tar.xz && \
+    wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.14/arm-unknown-linux-musleabihf.tar.xz && \
     tar xf arm-unknown-linux-musleabihf.tar.xz -C /opt && \
     rm -rf arm-unknown-linux-musleabihf.tar.xz && \
-    wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.13/x86_64-multilib-linux-musl.tar.xz && \
+    wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.14/x86_64-multilib-linux-musl.tar.xz && \
     tar xf x86_64-multilib-linux-musl.tar.xz -C /opt && \
     rm -rf x86_64-multilib-linux-musl.tar.xz
 
