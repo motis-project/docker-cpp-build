@@ -26,7 +26,7 @@ RUN apt-get update && \
 
 # INSTALL CLANG
 RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" && \
-    apt-get install -y --no-install-recommends clang-17 lldb-17 lld-17 clangd-17 clang-tidy-17 clang-format-17 clang-tools-17 llvm-17-dev llvm-17-tools libomp-17-dev libc++-17-dev libc++abi-17-dev libclang-common-17-dev libclang-17-dev libclang-cpp16-dev libunwind-17-dev libclang-rt-17-dev
+    apt-get install -y --no-install-recommends clang-17 lldb-17 lld-17 clangd-17 clang-tidy-17 clang-format-17 clang-tools-17 llvm-17-dev llvm-17-tools libomp-17-dev libc++-17-dev libc++abi-17-dev libclang-common-17-dev libclang-17-dev libclang-cpp17-dev libunwind-17-dev libclang-rt-17-dev
 
 # INSTALL MOLD LINKER
 RUN wget https://github.com/motis-project/mold/releases/download/v1.2.0/mold-linux-amd64 && \
