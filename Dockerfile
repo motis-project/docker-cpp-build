@@ -1,6 +1,6 @@
 FROM ubuntu:24.04 AS build-env
 
-ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-17/bin/llvm-symbolizer"
+ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-18/bin/llvm-symbolizer"
 ENV ASAN_OPTIONS="alloc_dealloc_mismatch=0"
 ENV UBSAN_OPTIONS="halt_on_error=1:abort_on_error=1"
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -8,7 +8,7 @@ ENV BUILDCACHE_COMPRESS="true"
 ENV BUILDCACHE_DIRECT_MODE="true"
 ENV BUILDCACHE_ACCURACY="SLOPPY"
 ENV BUILDCACHE_LUA_PATH="/opt/buildcache/share/lua-examples"
-ENV PATH="/opt:/opt/node-v20.11.1-linux-x64/bin:/opt/cmake-3.28.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="/opt:/opt/node-v20.17.0-linux-x64/bin:/opt/cmake-3.30.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # BASE SETUP
@@ -25,8 +25,8 @@ RUN apt-get update && \
         g++-13 gcc-13
 
 # INSTALL CLANG
-RUN add-apt-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main" && \
-    apt-get install -y --no-install-recommends clang-17 lldb-17 lld-17 clangd-17 clang-tidy-17 clang-format-17 clang-tools-17 llvm-17-dev llvm-17-tools libomp-17-dev libc++-17-dev libc++abi-17-dev libclang-common-17-dev libclang-17-dev libclang-cpp17-dev libunwind-17-dev libclang-rt-17-dev
+RUN add-apt-repository "deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main" && \
+    apt-get install -y --no-install-recommends clang-18 lldb-18 lld-18 clangd-18 clang-tidy-18 clang-format-18 clang-tools-18 llvm-18-dev llvm-18-tools libomp-18-dev libc++-18-dev libc++abi-18-dev libclang-common-18-dev libclang-18-dev libclang-cpp18-dev libunwind-18-dev libclang-rt-18-dev
 
 # INSTALL MOLD LINKER
 RUN wget https://github.com/motis-project/mold/releases/download/v1.2.0/mold-linux-amd64 && \
@@ -50,14 +50,14 @@ RUN wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0
     rm -rf x86_64-multilib-linux-musl.tar.xz
 
 # INSTALL NODE JS
-RUN wget https://nodejs.org/dist/v20.11.1/node-v20.11.1-linux-x64.tar.xz && \
-    tar xf node-v20.11.1-linux-x64.tar.xz -C /opt && \
-    rm -rf node-v20.11.1-linux-x64.tar.xz
+RUN wget https://nodejs.org/dist/v20.17.0/node-v20.17.0-linux-x64.tar.xz && \
+    tar xf node-v20.17.0-linux-x64.tar.xz -C /opt && \
+    rm -rf node-v20.17.0-linux-x64.tar.xz
 
 # INSTALL CMAKE
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.28.3/cmake-3.28.3-linux-x86_64.tar.gz &&\
-    tar xf cmake-3.28.3-linux-x86_64.tar.gz -C /opt && \
-    rm -rf cmake-3.28.3-linux-x86_64.tar.gz
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.3/cmake-3.30.3-linux-x86_64.tar.gz &&\
+    tar xf cmake-3.30.3-linux-x86_64.tar.gz -C /opt && \
+    rm -rf cmake-3.30.3-linux-x86_64.tar.gz
 
 # INSTALL PKG
 RUN wget https://github.com/motis-project/pkg/releases/download/v0.16/pkg-linux-amd64 -O /opt/pkg && \
