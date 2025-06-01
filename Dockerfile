@@ -60,7 +60,7 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.3/cmake-3.30.3
     rm -rf cmake-3.30.3-linux-x86_64.tar.gz
 
 # INSTALL PKG
-RUN wget https://github.com/motis-project/pkg/releases/download/v0.16/pkg-linux-amd64 -O /opt/pkg && \
+RUN wget https://github.com/motis-project/pkg/releases/download/v0.22/pkg-linux-amd64 -O /opt/pkg && \
     chmod +x /opt/pkg
 
 # INSTALL BUILDCACHE
