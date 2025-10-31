@@ -8,7 +8,7 @@ ENV BUILDCACHE_COMPRESS="true"
 ENV BUILDCACHE_DIRECT_MODE="true"
 ENV BUILDCACHE_ACCURACY="SLOPPY"
 ENV BUILDCACHE_LUA_PATH="/opt/buildcache/share/lua-examples"
-ENV PATH="/opt:/opt/node-v20.17.0-linux-x64/bin:/opt/cmake-3.30.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="/opt:/opt/node-v24.11.0-linux-x64/bin:/opt/cmake-3.30.3-linux-x86_64/bin:/opt/buildcache/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # BASE SETUP
@@ -50,9 +50,9 @@ RUN wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0
     rm -rf x86_64-multilib-linux-musl.tar.xz
 
 # INSTALL NODE JS
-RUN wget https://nodejs.org/dist/v20.17.0/node-v20.17.0-linux-x64.tar.xz && \
-    tar xf node-v20.17.0-linux-x64.tar.xz -C /opt && \
-    rm -rf node-v20.17.0-linux-x64.tar.xz
+RUN wget https://nodejs.org/dist/v24.11.0/node-v24.11.0-linux-x64.tar.xz && \
+    tar xf node-v24.11.0-linux-x64.tar.xz -C /opt && \
+    rm -rf node-v24.11.0-linux-x64.tar.xz
 
 # INSTALL CMAKE
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.30.3/cmake-3.30.3-linux-x86_64.tar.gz &&\
