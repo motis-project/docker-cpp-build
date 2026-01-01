@@ -1,6 +1,6 @@
 FROM ubuntu:24.04 AS build-env
 
-ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-18/bin/llvm-symbolizer"
+ENV ASAN_SYMBOLIZER_PATH="/usr/lib/llvm-21/bin/llvm-symbolizer"
 ENV ASAN_OPTIONS="alloc_dealloc_mismatch=0"
 ENV UBSAN_OPTIONS="halt_on_error=1:abort_on_error=1"
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -25,18 +25,14 @@ RUN apt-get update && \
         g++-13 gcc-13
 
 # INSTALL CLANG
-RUN add-apt-repository "deb http://apt.llvm.org/noble/ llvm-toolchain-noble-18 main" && \
-    apt-get install -y --no-install-recommends clang-18 lldb-18 lld-18 clangd-18 clang-tidy-18 clang-format-18 clang-tools-18 llvm-18-dev llvm-18-tools libomp-18-dev libc++-18-dev libc++abi-18-dev libclang-common-18-dev libclang-18-dev libclang-cpp18-dev libunwind-18-dev libclang-rt-18-dev
+RUN add-apt-repository "deb http://apt.llvm.org/noble/ llvm-toolchain-noble-21 main" && \
+    apt-get install -y --no-install-recommends clang-21 lldb-21 lld-21 clangd-21 clang-tidy-21 clang-format-21 clang-tools-21 llvm-21-dev llvm-21-tools libomp-21-dev libc++-21-dev libc++abi-21-dev libclang-common-21-dev libclang-21-dev libclang-cpp21-dev libunwind-21-dev libclang-rt-21-dev
 
 # INSTALL MOLD LINKER
 RUN wget https://github.com/motis-project/mold/releases/download/v1.2.0/mold-linux-amd64 && \
     mkdir -p /opt/mold && \
     mv mold-linux-amd64 /opt/mold/ld && \
     chmod +x /opt/mold/ld
-
-# INSTALL ELM 0.18
-RUN wget https://github.com/elm-lang/elm-platform/releases/download/0.18.0-exp/elm-platform-linux-64bit.tar.gz && \
-    tar xf elm-platform-linux-64bit.tar.gz -C /opt
 
 # INSTALL CROSS-PLATFORM TOOLCHAINS
 RUN wget https://github.com/motis-project/musl-toolchains/releases/download/v0.0.14/aarch64-unknown-linux-musl.tar.xz && \
