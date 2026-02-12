@@ -60,9 +60,9 @@ RUN wget https://github.com/motis-project/pkg/releases/download/v0.22/pkg-linux-
     chmod +x /opt/pkg
 
 # INSTALL BUILDCACHE
-RUN wget https://github.com/mbitsnbites/buildcache/releases/download/v0.28.2/buildcache-linux.tar.gz && \
-    tar xf buildcache-linux.tar.gz -C /opt && \
-    rm -rf buildcache-linux.tar.gz
+RUN wget https://gitlab.com/bits-n-bites/buildcache/-/releases/v0.31.7/downloads/buildcache-linux-amd64.tar.gz && \
+    tar xf buildcache-linux-amd64.tar.gz -C /opt && \
+    rm -rf buildcache-linux-amd64.tar.gz
 
 # ADD BUILD DEBUG TOOLS
 RUN apt-get install -y --no-install-recommends tree
