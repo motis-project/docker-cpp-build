@@ -70,5 +70,8 @@ RUN apt-get install -y --no-install-recommends tree
 # UBUNTU 22.04 IS MISSING BZIP IN THE BASE IMAGE
 RUN apt-get install -y --no-install-recommends bzip2
 
+# ADD yq
+RUN apt-get install -y --no-install-recommends yq
+
 # CLEAN UP
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
